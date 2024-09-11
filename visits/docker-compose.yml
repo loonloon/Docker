@@ -1,0 +1,11 @@
+version: '3'
+
+services:
+  redis-server:
+    image: 'redis'  # This service uses the official Redis image from Docker Hub
+
+  node-app:
+    restart: always  # This service restarts automatically if it stops for any reason
+    build: .  # This service builds the Docker image for the Node.js app using the Dockerfile in the current directory
+    ports:
+      - "4001:8081"  # Maps port 4001 on the host to port 8081 inside the container, allowing access to the Node.js app from outside the container
